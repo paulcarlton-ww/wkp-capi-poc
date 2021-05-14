@@ -43,6 +43,8 @@ function args() {
 
 args "$@"
 
+pushd /home/paul/wkp-components
 wk setup install
 cp cluster-specs/mgmt01/wkp/config.yaml setup
 wk setup run
+popd
