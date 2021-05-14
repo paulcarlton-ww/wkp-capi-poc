@@ -217,8 +217,10 @@ if [ ! -f ${CREDS_DIR}/mgmt.kubeconfig ]; then
 fi
 export KUBECONFIG=${CREDS_DIR}/mgmt.kubeconfig
 
-./utils/deploy-flux.sh ${debug} cluster-specs/mgmt01/flux
-./utils/deploy-kubeseal.sh ${debug} clusters/mgmt01
+utils/deploy-wkp.sh
+
+exit
+
 ./utils/kubeseal-aws-account.sh ${debug} --key-file clusters/mgmt01/pub-sealed-secrets.pem --aws-account-name account-one cluster-specs/mgmt01/eks-accounts/account-one-secret.yaml
 ./utils/kubeseal-aws-account.sh ${debug} --key-file clusters/mgmt01/pub-sealed-secrets.pem --aws-account-name account-two cluster-specs/mgmt01/eks-accounts/account-two-secret.yaml
 
